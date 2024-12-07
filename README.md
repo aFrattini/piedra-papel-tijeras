@@ -14,6 +14,7 @@ Para lograrlo, se llevará a cabo lo siguiente:
 * Implementar en Python los componentes necesarios para construir la función agente o función de mapeo entre percepciones y acciones.
 
 
+
 #### Propiedades del entorno de tareas
 ---
 | Entorno de tareas | Observable | Agentes | Determinista | Episódico | Estático | Discreto | Conocido |
@@ -34,3 +35,21 @@ Para lograrlo, se llevará a cabo lo siguiente:
 * **Discreto vs. contínuo:**  El entorno es ***discreto*** debido a que el número de acciones y percepciones son finitas.
 
 * **Conocido vs. desconocido:** Los jugadores saben las reglas del juego en todo momento, las cuales son claras y bien definidas, por lo que el entorno es considerado ***conocido***.
+
+
+
+#### Estructura del agente
+
+Luego de analizar cada uno de los cuatro tipos de agentes propuestos en la teoría, se ha elegido para esta práctica desarrollar un ***agente basado en modelos***, ya que este es particularmente adecuado para entornos parcialmente observables. En el juego Piedra, Papel o Tijeras, el agente no sabe qué jugará el oponente, pero puede analizar el historial de jugadas recientes (Estado). Con esta información, toma su "mejor suposición" y elige la opción que contrarresta la jugada más frecuente del oponente (Reglas condicionales), aumentando así sus posibilidades de ganar.
+
+![Estructura del agente](doc/estructura_agente.png)
+
+
+
+#### Implementación en Python
+
+Según la teoría, la función de un agente basado en modelos sería la siguiente: 
+
+![Función agente](doc/funcion_agente_libro.png)
+
+
