@@ -1,9 +1,9 @@
 import random
 from enum import IntEnum
+from collections import Counter
 
 
 class GameAction(IntEnum):
-
     Rock = 0
     Paper = 1
     Scissors = 2
@@ -59,9 +59,28 @@ def assess_game(user_action, computer_action):
     return game_result
 
 
-def get_computer_action():
-    computer_selection = random.randint(0, len(GameAction) - 1)
-    computer_action = GameAction(computer_selection)
+def get_computer_action(user_action):
+
+    # Inicializar el historial solo una vez
+    if not hasattr(get_computer_action, "opponent_history"):
+        get_computer_action.opponent_history = [] 
+
+    # Actualizar el historial de jugadas
+    get_computer_action.opponent_history.append(user_action)
+    
+    # Contar las jugadas del oponente y buscar la más comun
+    recent_history = get_computer_action.opponent_history[:] 
+    move_counts = Counter(recent_history)
+    most_common_move = move_counts.most_common(1)[0][0]
+
+    # Elegir la jugada que gana contra la jugada más común
+    if most_common_move == GameAction.Rock:
+        computer_action = GameAction.Paper
+    elif most_common_move == GameAction.Paper:
+        computer_action = GameAction.Scissors
+    else:
+        computer_action = GameAction.Rock
+    
     print(f"Computer picked {computer_action.name}.")
 
     return computer_action
@@ -92,7 +111,7 @@ def main():
             print(f"Invalid selection. Pick a choice in range {range_str}!")
             continue
 
-        computer_action = get_computer_action()
+        computer_action = get_computer_action(user_action)
         assess_game(user_action, computer_action)
 
         if not play_another_round():
