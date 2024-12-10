@@ -68,8 +68,8 @@ def get_computer_action(user_action):
     # Actualizar el historial de jugadas
     get_computer_action.opponent_history.append(user_action)
     
-    # Contar las jugadas del oponente y buscar la más comun
-    recent_history = get_computer_action.opponent_history[:] 
+    # Contar las 10 últimas jugadas del oponente y buscar la más comun
+    recent_history = get_computer_action.opponent_history[-10:] 
     move_counts = Counter(recent_history)
     most_common_move = move_counts.most_common(1)[0][0]
 
