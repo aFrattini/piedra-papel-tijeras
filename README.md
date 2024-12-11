@@ -3,7 +3,7 @@
 *Antonella Frattini - Curso de Especialización en IA y Big Data - IES de Teis*
 
 
-#### Objetivo del proyecto
+## Objetivo del proyecto
 ---
 Este proyecto tiene como objetivo programar un agente inteligente para resolver el entorno de tareas del juego Piedra, Papel, Tijeras, siguiendo las directrices de modelado propuestas en el capítulo 2 (Intelligent Agents) del libro Artificial Intelligence: A Modern Approach de Russell y Norvig.
 
@@ -15,7 +15,7 @@ Para lograrlo, se llevará a cabo lo siguiente:
 
 
 
-#### Propiedades del entorno de tareas
+## Propiedades del entorno de tareas
 ---
 | Entorno de tareas | Observable | Agentes | Determinista | Episódico | Estático | Discreto | Conocido |
 |---------------------|------------|---------|--------------|-----------|----------|----------|----------|
@@ -38,7 +38,7 @@ Para lograrlo, se llevará a cabo lo siguiente:
 
 
 
-#### Estructura del agente
+## Estructura del agente
 
 Luego de analizar cada uno de los cuatro tipos de agentes propuestos en la teoría, se ha elegido para esta práctica desarrollar un ***agente basado en modelos***, ya que este es particularmente adecuado para entornos parcialmente observables. En el juego Piedra, Papel o Tijeras, el agente no sabe qué jugará el oponente, pero puede analizar el historial de jugadas recientes (Estado). Con esta información, toma su "mejor suposición" y elige la opción que contrarresta la jugada más frecuente del oponente (Reglas condicionales), aumentando así sus posibilidades de ganar.
 
@@ -46,10 +46,21 @@ Luego de analizar cada uno de los cuatro tipos de agentes propuestos en la teor�
 
 
 
-#### Implementación en Python
+## Implementación en Python
 
-Según la teoría, la función de un agente basado en modelos sería la siguiente: 
+La implementación del agente se lleva a cabo en la función ***get_computer_action()***, que mantiene un historial de las jugadas realizadas por el oponente. La estrategia del agente para maximizar sus probabilidades de ganar consiste en analizar las últimas 10 jugadas del historial y seleccionar la opción que contrarresta la jugada más frecuente del oponente. En un principio se tenía en cuenta todo el historial de jugadas, pero el código se ha adaptado para que al considerar solo lás últimas 10, el agente puede ir adaptándose a los cambios de estrategia de su oponente.
 
-![Función agente](doc/funcion_agente_libro.png)
+La función recibe como parámetro la última jugada del oponente (*user_action*) y va añadiendolas al historial (*opponent_history*), el cual se crea solo la primera vez que se llama a la función. Tal como comenté previamente, de las últimas 10 jugadas se obtiene la más frecuente (*most_common_move*) y elige la jugada que la contrarestra.
+
+
+## Extención del juego a Lagarto y Spock
+
+Por último, se pide extender el juego a "Rock, Paper, Scissors, Lizard, Spock". Para lograrlo, además de agregar estas dos opciones extras a *GameAction*, he modificado las funciones *get_computer_action* y *asses_game*.
+
+La función ***get_computer_action*** se ha adaptado de manera que se incluyan las opciones de "Spock" y "Lizard" en las condiciones de decisión del agente. En la función ***asses_game***, además de agregar la lógica para estas dos nuevas opciones, se han ajustado las condiciones existentes para que se adapten a la nueva modalidad. Anteriormente, si el usuario elegía Paper se evaluaba unicamente si el Agente había elegido Rock (*if computer_action == GameAction.Rock*) y daba la partida como ganada; sino, la perdía. Ahora, dado que en el juego RPSLS cada movimiento gana contra dos y pierde contra otros dos,  se ha modificado la lógica para que busque en una lista con los dos valores a los que le gana (*if computer_action in [GameAction.Paper, GameAction.Lizard]*).
+
+
+## Intrucciones de instalación y uso
+
 
 
