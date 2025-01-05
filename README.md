@@ -4,7 +4,7 @@
 
 
 ## Objetivo del proyecto
----
+
 Este proyecto tiene como objetivo programar un agente inteligente para resolver el entorno de tareas del juego Piedra, Papel, Tijeras, siguiendo las directrices de modelado propuestas en el capítulo 2 (Intelligent Agents) del libro Artificial Intelligence: A Modern Approach de Russell y Norvig.
 
 Para lograrlo, se llevará a cabo lo siguiente:
@@ -16,7 +16,7 @@ Para lograrlo, se llevará a cabo lo siguiente:
 
 
 ## Propiedades del entorno de tareas
----
+
 | Entorno de tareas | Observable | Agentes | Determinista | Episódico | Estático | Discreto | Conocido |
 |---------------------|------------|---------|--------------|-----------|----------|----------|----------|
 | RPS                 | Parcialmente | Múltiples | No | Si         | Si        | Si        | Si        |
@@ -60,7 +60,30 @@ Por último, se pide extender el juego a "Rock, Paper, Scissors, Lizard, Spock".
 La función ***get_computer_action*** se ha adaptado de manera que se incluyan las opciones de "Spock" y "Lizard" en las condiciones de decisión del agente. En la función ***asses_game***, además de agregar la lógica para estas dos nuevas opciones, se han ajustado las condiciones existentes para que se adapten a la nueva modalidad. Anteriormente, si el usuario elegía Paper se evaluaba unicamente si el Agente había elegido Rock (*if computer_action == GameAction.Rock*) y daba la partida como ganada; sino, la perdía. Ahora, dado que en el juego RPSLS cada movimiento gana contra dos y pierde contra otros dos,  se ha modificado la lógica para que busque en una lista con los dos valores a los que le gana (*if computer_action in [GameAction.Paper, GameAction.Lizard]*).
 
 
-## Intrucciones de instalación y uso
+## Instrucciones de instalación y uso
+
+Para instalar y probar el programa se deben realizar los siguientes pasos:
+
+1. Abrir una terminal y clonar el proyecto:
+   <code> git clone https://github.com/aFrattini/piedra-papel-tijeras.git </code>
+   
+2. Crear el entorno virtual:
+   <code> python -m venv env_rps </code>
+
+3. Activar el entorno virtual:
+-Linux/Mac
+   <code>source env_rps/bin/activate</code>
+-Windows
+   <code>.\env_rps\Scripts\activate</code>
+
+4. Instalar dependencias (dentro de la carpeta del proyecto):
+   <code>cd .\piedra-papel-tijeras\</code>
+   <code>pip install -r requirements.txt</code>
+
+5. Ejecutar el juego:
+   <code>cd src</code>
+   <code>python game.py</code>
+
 
 
 
