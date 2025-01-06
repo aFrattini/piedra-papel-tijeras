@@ -62,27 +62,32 @@ La función ***get_computer_action*** se ha adaptado de manera que se incluyan l
 
 ## Instrucciones de instalación y uso
 
-Para instalar y probar el programa se deben realizar los siguientes pasos:
+Para instalar y probar el programa, sigue estos pasos:
 
-1. Abrir una terminal y clonar el proyecto:
-   <code> git clone https://github.com/aFrattini/piedra-papel-tijeras.git </code>
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/aFrattini/piedra-papel-tijeras.git
    
 2. Crear el entorno virtual:
-   <code> python -m venv env_rps </code>
+   ```bash
+   python -m venv env_rps
 
 3. Activar el entorno virtual:
--Linux/Mac
-   <code>source env_rps/bin/activate</code>
--Windows
-   <code>.\env_rps\Scripts\activate</code>
+
+    ```bash
+    source env_rps/bin/activate #Linux/Mac
+
+    .\env_rps\Scripts\activate #Windows
 
 4. Instalar dependencias (dentro de la carpeta del proyecto):
-   <code>cd .\piedra-papel-tijeras\</code>
-   <code>pip install -r requirements.txt</code>
+   ```bash
+   cd .\piedra-papel-tijeras\
+   pip install -r requirements.txt
 
 5. Ejecutar el juego:
-   <code>cd src</code>
-   <code>python game.py</code>
+    ```bash
+   cd src
+   python game.py
 
 
 
